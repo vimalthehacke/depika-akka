@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Poppins", sans-serif;
+  
+  --color-gold: #C5A059;
+  --color-midnight: #0F172A;
+  --color-slate-900: #0F172A;
+  --color-charcoal: #1E293B;
+
+  --animate-gradient-x: gradient-x 5s ease infinite;
+  --animate-bounce-slow: bounce 3s infinite;
+
+  @keyframes gradient-x {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-[#0F172A] text-slate-200 font-sans antialiased overflow-x-hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-white;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-[#C5A059] via-[#E5B299] to-[#C5A059] bg-clip-text text-transparent animate-gradient-x;
+    background-size: 200% 200%;
+  }
+}
