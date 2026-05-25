@@ -127,7 +127,7 @@ const Hero = () => {
           className="w-full h-full"
         >
            <img 
-            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80" 
+            src="https://image.wedmegood.com/resized-nw/700X/wp-content/uploads/2022/09/051b459d-f4ea-4fa1-9ca8-23284dedd858.jpg.jpg" 
             alt="Boutique Atmosphere" 
             className="w-full h-full object-cover brightness-[0.4]" 
             referrerPolicy="no-referrer"
@@ -137,29 +137,30 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-midnight/80 via-midnight/40 to-midnight"></div>
       </div>
 
-      <div className="relative z-10 text-center max-w-4xl px-6">
+      <div className="relative z-10 text-center max-w-5xl px-6">
         <motion.div
            initial={{ opacity: 0, y: 30 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.8 }}
+           className="flex flex-col items-center justify-center"
         >
-          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-[0.4em] uppercase text-gold bg-gold/10 border border-gold/20">
-            Royal Boutique Experience
+          <span className="inline-block px-4 py-1.5 mb-8 text-xs font-bold tracking-[0.5em] uppercase text-gold bg-gold/5 border border-gold/20">
+            Exclusive Handcrafts
           </span>
-          <h1 className="text-7xl md:text-9xl font-serif font-black text-white mb-6 tracking-tight leading-tight">
-            DP <span className="text-gold italic font-light">CREATIONS</span>
+          <h1 className="text-6xl sm:text-8xl md:text-[10rem] font-serif font-black text-white mb-8 tracking-tighter leading-[0.9]">
+            DP <span className="text-gold italic">CREATIONS</span>
           </h1>
-          <p className="text-xl md:text-2xl text-slate-300 font-light mb-10 tracking-wide max-w-2xl mx-auto leading-relaxed">
-            Crafting Timeless Elegance through Masterful Aari Work & Bespoke Handcrafted Accessories.
+          <p className="text-lg md:text-xl text-slate-400 font-light mb-12 tracking-widest max-w-xl leading-relaxed uppercase">
+            Bespoke Hand Embroidery & Accessories
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.a
               href="#gallery"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="w-full sm:w-auto px-12 py-4 bg-gold text-midnight font-black tracking-widest uppercase shadow-2xl hover:bg-white transition-all flex items-center justify-center group"
             >
-              Explore Collection
+              See Our Work
               <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </motion.a>
             <motion.a
@@ -168,11 +169,23 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
               className="w-full sm:w-auto px-12 py-4 border border-white/20 text-white font-bold tracking-widest uppercase backdrop-blur-sm hover:bg-white/10 transition-all text-sm"
             >
-              Enquire Now
+              Contact Us Now
             </motion.a>
           </div>
         </motion.div>
       </div>
+
+      {/* Hero Scroll Indicator */}
+      <motion.div 
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-white/30 flex flex-col items-center"
+      >
+        <span className="text-[10px] uppercase tracking-[0.4em] mb-2 font-bold">Scroll</span>
+        <div className="w-[1px] h-12 bg-white/20 relative">
+          <div className="absolute top-0 left-0 w-full bg-gold h-1/2"></div>
+        </div>
+      </motion.div>
     </section>
   );
 };
@@ -203,31 +216,67 @@ const SectionHeading = ({ subtitle, title, light = true }) => (
   </div>
 );
 
+const TrustSection = () => {
+  const points = [
+    { title: 'Best Quality', desc: 'We use the finest beads and threads for your dresses.', icon: <Star className="w-8 h-8" /> },
+    { title: 'Lower Price', desc: 'Beautiful designs that also save your money.', icon: <ShoppingBag className="w-8 h-8" /> },
+    { title: 'Fast Work', desc: 'We finish your work on time, every time.', icon: <Star className="w-8 h-8" /> },
+  ];
+
+  return (
+    <section className="py-20 border-y border-white/5 bg-midnight/50">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {points.map((point, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.2 }}
+              className="text-center"
+            >
+              <div className="w-16 h-16 border border-gold/30 flex items-center justify-center mx-auto mb-6 text-gold bg-gold/5">
+                {point.icon}
+              </div>
+              <h3 className="text-xl font-serif font-bold text-white mb-2">{point.title}</h3>
+              <p className="text-sm text-slate-400 font-light">{point.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Services = () => {
   const services = [
-    { title: 'Aari Work', icon: <Star />, image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1000', desc: 'Symphony of threads and beads, handcrafted for royalty.' },
-    { title: 'Bangles', icon: <Star />, image: 'https://images.unsplash.com/photo-1542319630-50fb7cad4211?q=80&w=1000', desc: 'Exquisite traditional and modern bangles for every wrist.' },
-    { title: 'Thread Bangles', icon: <Star />, image: 'https://images.unsplash.com/photo-1630045610817-486127e99742?q=80&w=1000', desc: 'Silk thread artistry meticulously wrapped for vibrant elegance.' },
-    { title: 'Mehendi', icon: <Star />, image: 'https://images.unsplash.com/photo-1590670460287-39958742490b?q=80&w=1000', desc: 'Dark, intricate henna patterns to celebrate your most special days.' },
-    { title: 'Hair Accessories', icon: <Star />, image: 'https://images.unsplash.com/photo-1601050690597-df0568f70968?q=80&w=1000', desc: 'Crowning glory pieces designed with crystals and fine craftsmanship.' },
-    { title: 'Bouquets', icon: <Star />, image: 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1000', desc: 'Bespoke floral arrangements that breathe life into any space.' },
-    { title: 'Accessories', icon: <Star />, image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=1000', desc: 'Curated collection of unique, handcrafted statement pieces.' },
-    { title: 'Return Gifts', icon: <Star />, image: 'https://images.unsplash.com/photo-1512418490979-92798ccc13b0?q=80&w=1000', desc: 'Personalized luxury hampers for baby showers and weddings.' },
+    { title: 'Aari Work', icon: <Star />, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQUoqOZG_EqTOe1wlAmKMbOJieI0BUtoX_dA&s', desc: 'Beautiful hand embroidery work done with beads and threads.' },
+    { title: 'Bangles', icon: <Star />, image: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRYF4oi2li4RY0KjdAOIW2gdaldFSuGWdUJFoj51n9DePBS5WKmZRPpy_ZQm1nEE-rfujq-1SASi0POfHUhAn9M8jQxjEXL7P2afBgCvxo', desc: 'Beautiful bangles for every hand and every occasion.' },
+    { title: 'Thread Bangles', icon: <Star />, image: 'https://img.nihaojewelry.com/fit-in/800x800/product/2026/3/19/2034463749175382016/Retro-Multicolor-Enamel-Flowers-Bangle-In-Metal-Featuring-Electroplated-Craft.jpg', desc: 'Silk thread bangles made carefully with bright colors.' },
+    { title: 'Mehendi', icon: <Star />, image: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRHqPzQCkyDrUgr26mi0eVsjy3SSzLDyG9YgUgNf-kM4KVo2Qqplf4NrgpTDkmC5uIqL6Mn1o69ao-gRqkXz_ffbUHhgZW4-EGeNB8NwbAVB1xRM_RCnaPYDQ&usqp=CAc', desc: 'Deep color mehendi designs for your special day.' },
+    { title: 'Hair Accessories', icon: <Star />, image: 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSp8Lt814IFTLDn_h2fZhX2zlTLSYFPJElqBkcPopEIgzwT7OXaeMbepLTQyUOshBvEmJPa9kHnU7r_GhiyeKAUUf_Rej15z8n62NxVB6wLUaL-yByuRUOj1Q&usqp=CAc', desc: 'Beautiful hair clips and flowers for a great look.' },
+    { title: 'Bouquets', icon: <Star />, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQUoqOZG_EqTOe1wlAmKMbOJieI0BUtoX_dA&s', desc: 'Beautiful flower bunches for gifting to your loved ones.' },
+    { title: 'Accessories', icon: <Star />, image: 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSp8Lt814IFTLDn_h2fZhX2zlTLSYFPJElqBkcPopEIgzwT7OXaeMbepLTQyUOshBvEmJPa9kHnU7r_GhiyeKAUUf_Rej15z8n62NxVB6wLUaL-yByuRUOj1Q&usqp=CAc', desc: 'Special handmade items to match your dress perfectly.' },
+    { title: 'Return Gifts', icon: <Star />, image: 'https://img.nihaojewelry.com/fit-in/800x800/product/2026/3/19/2034463749175382016/Retro-Multicolor-Enamel-Flowers-Bangle-In-Metal-Featuring-Electroplated-Craft.jpg', desc: 'Personalized gifts for baby showers and weddings.' },
   ];
 
   return (
     <section id="services" className="py-24 bg-charcoal/30">
       <div className="max-w-7xl mx-auto px-6">
-        <SectionHeading subtitle="Craftsmanship" title="Signature Services" />
+        <SectionHeading subtitle="What We Do" title="Our Services" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
+              transition={{ 
+                delay: index * 0.1,
+                y: { duration: 0.3, ease: "easeOut" }
+              }}
               viewport={{ once: true }}
-              className="group relative overflow-hidden bg-midnight border border-white/5 hover:border-gold/30 transition-all duration-500"
+              className="group relative overflow-hidden bg-midnight border border-white/5 hover:border-gold/40 hover:shadow-[0_0_30px_-10px_rgba(212,175,55,0.3)] transition-all duration-500"
             >
               <div className="h-80 overflow-hidden relative">
                 <img 
@@ -256,7 +305,7 @@ const FeaturedAari = () => {
   return (
     <section id="aari" className="relative py-32 bg-midnight text-white overflow-hidden">
       <div className="absolute top-0 left-0 text-[18rem] font-serif font-black text-white/[0.02] leading-none pointer-events-none select-none">
-        SIGNATURE
+        DESIGN
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -269,33 +318,33 @@ const FeaturedAari = () => {
           >
             <div className="aspect-[4/5] overflow-hidden border border-white/10 p-4 bg-charcoal/20">
               <img 
-                src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&q=80" 
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQUoqOZG_EqTOe1wlAmKMbOJieI0BUtoX_dA&s" 
                 alt="Aari Work Mastery" 
-                className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover transition-all duration-700"
                 referrerPolicy="no-referrer"
                 loading="lazy"
               />
             </div>
             <div className="absolute -bottom-10 -right-10 w-64 glass p-8 shadow-2xl border-gold/20 hidden xl:block">
-              <h4 className="text-gold font-serif text-xl mb-2">Artisanal Pride</h4>
-              <p className="text-xs text-slate-300 tracking-wider leading-relaxed">Each stitch is a testament to our dedication to preserving traditional Aari techniques.</p>
+              <h4 className="text-gold font-serif text-xl mb-2">Our Quality</h4>
+              <p className="text-xs text-slate-300 tracking-wider leading-relaxed">Every small stitch is made with care and love by our team.</p>
             </div>
           </motion.div>
 
           <div>
-            <SectionHeading subtitle="The Masterpiece" title="Bespoke Aari Embroidery" />
+            <SectionHeading subtitle="Best Work" title="Special Aari Designs" />
             <div className="text-slate-300 space-y-8 text-lg font-light leading-relaxed mb-12">
               <p>
-                Our Aari Work is the cornerstone of DP CREATIONS. We blend century-old needlework traditions with contemporary luxury aesthetics.
+                Our Aari Work is very famous at DP CREATIONS. We use old methods to make new and modern designs for you.
               </p>
               <div className="grid grid-cols-2 gap-8">
                 <div>
-                  <h5 className="text-gold font-serif text-lg mb-2">Exquisite Detail</h5>
-                  <p className="text-sm text-slate-400">Micro-precision in every bead and zardosi thread.</p>
+                  <h5 className="text-gold font-serif text-lg mb-2">Clean Work</h5>
+                  <p className="text-sm text-slate-400">Very clear and nice needle work on your dress.</p>
                 </div>
                 <div>
-                  <h5 className="text-gold font-serif text-lg mb-2">Custom Cut</h5>
-                  <p className="text-sm text-slate-400">Tailored designs uniquely sketched for your vision.</p>
+                  <h5 className="text-gold font-serif text-lg mb-2">Your Choice</h5>
+                  <p className="text-sm text-slate-400">We make designs exactly like you want them.</p>
                 </div>
               </div>
             </div>
@@ -305,7 +354,7 @@ const FeaturedAari = () => {
               whileTap={{ scale: 0.95 }}
               className="inline-block px-12 py-5 bg-gold text-midnight font-black tracking-widest uppercase hover:bg-white transition-all shadow-xl"
             >
-              Consult with Artisan
+              Talk to Us
             </motion.a>
           </div>
         </div>
@@ -316,37 +365,54 @@ const FeaturedAari = () => {
 
 const Gallery = () => {
   const images = [
-    { src: 'https://images.unsplash.com/photo-1601050690597-df0568f70968', title: 'Regal Bangles' },
-    { src: 'https://images.unsplash.com/photo-1542332213-9b5a5a3fad35', title: 'Bridal Mehendi' },
-    { src: 'https://images.unsplash.com/photo-1621607512214-68297480165e', title: 'Hair Jewels' },
-    { src: 'https://images.unsplash.com/photo-1519340244303-2415170d744b', title: 'Floral Elegance' },
-    { src: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633', title: 'Embroidery Detail' },
-    { src: 'https://images.unsplash.com/photo-1512418490979-92798ccc13b0', title: 'Luxury Favors' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQUoqOZG_EqTOe1wlAmKMbOJieI0BUtoX_dA&s', title: 'Work Detail' },
+    { src: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRHqPzQCkyDrUgr26mi0eVsjy3SSzLDyG9YgUgNf-kM4KVo2Qqplf4NrgpTDkmC5uIqL6Mn1o69ao-gRqkXz_ffbUHhgZW4-EGeNB8NwbAVB1xRM_RCnaPYDQ&usqp=CAc', title: 'Mehendi Design' },
+    { src: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRYF4oi2li4RY0KjdAOIW2gdaldFSuGWdUJFoj51n9DePBS5WKmZRPpy_ZQm1nEE-rfujq-1SASi0POfHUhAn9M8jQxjEXL7P2afBgCvxo', title: 'Bangle Collection' },
+    { src: 'https://img.nihaojewelry.com/fit-in/800x800/product/2026/3/19/2034463749175382016/Retro-Multicolor-Enamel-Flowers-Bangle-In-Metal-Featuring-Electroplated-Craft.jpg', title: 'New Style' },
+    { src: 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSp8Lt814IFTLDn_h2fZhX2zlTLSYFPJElqBkcPopEIgzwT7OXaeMbepLTQyUOshBvEmJPa9kHnU7r_GhiyeKAUUf_Rej15z8n62NxVB6wLUaL-yByuRUOj1Q&usqp=CAc', title: 'Accessory Pair' },
+    { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQUoqOZG_EqTOe1wlAmKMbOJieI0BUtoX_dA&s', title: 'Aari Pattern' },
   ];
 
   return (
     <section id="gallery" className="py-32 bg-charcoal">
       <div className="max-w-7xl mx-auto px-6">
-        <SectionHeading subtitle="Portfolio" title="Our Visual Narrative" />
+        <SectionHeading subtitle="Photos" title="Our Gallery" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
           {images.map((img, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ delay: i * 0.1 }}
-              className="relative aspect-square overflow-hidden group border border-white/5"
+              whileHover={{ scale: 1.02 }}
+              transition={{ 
+                opacity: { delay: i * 0.1 },
+                scale: { duration: 0.4, ease: "easeOut" }
+              }}
+              className="relative aspect-square overflow-hidden group border border-white/5 z-0 hover:z-10 cursor-pointer"
             >
               <img 
-                src={`${img.src}?auto=format&fit=crop&q=80`} 
+                src={img.src} 
                 alt={img.title} 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-50 group-hover:brightness-90"
+                className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-125 brightness-[0.3] group-hover:brightness-90 ease-out"
                 referrerPolicy="no-referrer"
                 loading="lazy"
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-midnight/40 backdrop-blur-sm">
-                 <span className="text-gold tracking-[0.3em] uppercase text-[10px] mb-2">Exhibition</span>
-                 <h4 className="text-2xl font-serif text-white">{img.title}</h4>
+              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 bg-midnight/30 backdrop-blur-[2px] group-hover:backdrop-blur-md">
+                 <motion.span 
+                   initial={{ y: 10, opacity: 0 }}
+                   whileHover={{ y: 0, opacity: 1 }}
+                   className="text-gold tracking-[0.4em] uppercase text-[10px] mb-3 font-bold"
+                 >
+                   Our Work
+                 </motion.span>
+                 <motion.h4 
+                   initial={{ y: 10, opacity: 0 }}
+                   whileHover={{ y: 0, opacity: 1 }}
+                   className="text-2xl font-serif text-white tracking-widest px-6 text-center"
+                 >
+                   {img.title}
+                 </motion.h4>
+                 <div className="w-0 h-[1px] bg-gold mt-4 group-hover:w-16 transition-all duration-1000"></div>
               </div>
             </motion.div>
           ))}
@@ -363,9 +429,9 @@ const Contact = () => {
         <div className="bg-charcoal/50 border border-white/5 overflow-hidden shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="p-16 lg:p-24 bg-midnight">
-              <h2 className="text-5xl font-serif font-bold text-white mb-8">Start Your <span className="text-gold">Creation</span></h2>
+              <h2 className="text-5xl font-serif font-bold text-white mb-8">Talk With <span className="text-gold">Us</span></h2>
               <p className="text-slate-400 font-light text-lg mb-16 leading-relaxed">
-                Connect with our boutique in Chennai for custom Aari work commissions or to browse our latest accessories collection.
+                Send us a message for your special dress or to ask about our prices.
               </p>
               
               <div className="space-y-10">
@@ -374,8 +440,18 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-gold" />
                   </div>
                   <div>
-                    <p className="text-gold/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-1">Direct Line</p>
+                    <p className="text-gold/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-1">Call Us</p>
                     <a href="tel:+919952626660" className="text-xl text-white font-medium">+91 99526 26660</a>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-6">
+                  <div className="w-14 h-14 border border-gold/30 rounded-none flex items-center justify-center shrink-0">
+                    <MapPin className="w-6 h-6 text-gold" />
+                  </div>
+                  <div>
+                    <p className="text-gold/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-1">Visit Shop</p>
+                    <span className="text-xl text-white font-medium">Mettur, Salem</span>
                   </div>
                 </div>
                 
@@ -384,7 +460,7 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-gold" />
                   </div>
                   <div>
-                    <p className="text-gold/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-1">Correspondence</p>
+                    <p className="text-gold/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-1">Email Us</p>
                     <a href="mailto:deepikasekar003@gmail.com" className="text-xl text-white font-medium">deepikasekar003@gmail.com</a>
                   </div>
                 </div>
@@ -394,20 +470,20 @@ const Contact = () => {
             <div className="p-16 lg:p-24 bg-charcoal/20 backdrop-blur-xl">
               <form className="space-y-10">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold">Identity</label>
-                  <input type="text" placeholder="FULL NAME" className="w-full px-0 py-4 border-b border-white/10 focus:border-gold outline-none transition-colors bg-transparent text-white font-medium placeholder:text-white/20" />
+                  <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold">Name</label>
+                  <input type="text" placeholder="YOUR NAME" className="w-full px-0 py-4 border-b border-white/10 focus:border-gold outline-none transition-colors bg-transparent text-white font-medium placeholder:text-white/20" />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold">Electronic Mail</label>
-                  <input type="email" placeholder="EMAIL ADDRESS" className="w-full px-0 py-4 border-b border-white/10 focus:border-gold outline-none transition-colors bg-transparent text-white font-medium placeholder:text-white/20" />
+                  <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold">Email</label>
+                  <input type="email" placeholder="YOUR EMAIL" className="w-full px-0 py-4 border-b border-white/10 focus:border-gold outline-none transition-colors bg-transparent text-white font-medium placeholder:text-white/20" />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold" >Subject of Interest</label>
+                  <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold" >What you need?</label>
                   <select className="w-full px-0 py-4 border-b border-white/10 focus:border-gold outline-none transition-colors bg-transparent text-white font-medium appearance-none">
-                    <option className="bg-midnight text-white">Aari Work Commission</option>
-                    <option className="bg-midnight text-white">Bangle Collection</option>
-                    <option className="bg-midnight text-white">Mehendi Booking</option>
-                    <option className="bg-midnight text-white">Wholesale Inquiries</option>
+                    <option className="bg-midnight text-white">Full Aari Work</option>
+                    <option className="bg-midnight text-white">Bangle Matching</option>
+                    <option className="bg-midnight text-white">Mehendi Designs</option>
+                    <option className="bg-midnight text-white">Other Accessories</option>
                   </select>
                 </div>
                 <motion.button 
@@ -415,7 +491,7 @@ const Contact = () => {
                   whileTap={{ scale: 0.98 }}
                   className="w-full py-6 bg-gold text-midnight font-black tracking-[0.2em] uppercase shadow-2xl hover:bg-white transition-all text-sm"
                 >
-                  Confirm Inquiery
+                  Send Message
                 </motion.button>
               </form>
             </div>
@@ -436,7 +512,7 @@ const Footer = () => (
         <a href="#" className="text-[10px] font-bold uppercase tracking-widest hover:text-gold transition-colors">Pinterest</a>
       </div>
       <p className="text-slate-600 text-[9px] uppercase tracking-[0.5em] leading-loose">
-        © {new Date().getFullYear()} DP CREATIONS CHENNAI. <br/> PRESERVATION OF ARTISTRY. MASTERFUL EXECUTION.
+        © {new Date().getFullYear()} DP CREATIONS METTUR. <br/> PRESERVATION OF ARTISTRY. MASTERFUL EXECUTION.
       </p>
     </div>
   </footer>
@@ -477,6 +553,7 @@ export default function App() {
         </p>
       </section>
       <Services />
+      <TrustSection />
       <FeaturedAari />
       <Gallery />
       <Contact />
