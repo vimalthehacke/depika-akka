@@ -64,7 +64,7 @@ const Navbar = () => {
             </motion.a>
           ))}
           <motion.a
-            href="https://wa.me/919952626660"
+            href="https://wa.me/919789459354"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-6 py-2 bg-gold text-midnight rounded-none text-xs font-bold tracking-widest uppercase shadow-lg hover:shadow-gold/20 transition-all border border-gold"
@@ -103,7 +103,7 @@ const Navbar = () => {
                 </a>
               ))}
               <a 
-                href="https://wa.me/919952626660"
+                href="https://wa.me/919789459354"
                 className="w-full py-3 bg-gold text-midnight text-center font-bold tracking-widest uppercase"
               >
                 Enquire Now
@@ -164,7 +164,7 @@ const Hero = () => {
               <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </motion.a>
             <motion.a
-              href="https://wa.me/919952626660"
+              href="https://wa.me/919789459354"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="w-full sm:w-auto px-12 py-4 border border-white/20 text-white font-bold tracking-widest uppercase backdrop-blur-sm hover:bg-white/10 transition-all text-sm"
@@ -349,7 +349,7 @@ const FeaturedAari = () => {
               </div>
             </div>
             <motion.a 
-              href="https://wa.me/919952626660"
+              href="https://wa.me/919789459354"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-block px-12 py-5 bg-gold text-midnight font-black tracking-widest uppercase hover:bg-white transition-all shadow-xl"
@@ -441,7 +441,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-gold/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-1">Call Us</p>
-                    <a href="tel:+919952626660" className="text-xl text-white font-medium">+91 99526 26660</a>
+                    <a href="tel:+919789459354" className="text-xl text-white font-medium">+91 97894 59354</a>
                   </div>
                 </div>
 
@@ -461,7 +461,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-gold/60 text-[10px] font-bold uppercase tracking-[0.3em] mb-1">Email Us</p>
-                    <a href="mailto:deepikasekar003@gmail.com" className="text-xl text-white font-medium">deepikasekar003@gmail.com</a>
+                    <a href="mailto:deepiscreation003@gmail.com" className="text-xl text-white font-medium">deepiscreation003@gmail.com</a>
                   </div>
                 </div>
               </div>
@@ -520,7 +520,7 @@ const Footer = () => (
 
 const WhatsAppButton = () => (
   <motion.a
-    href="https://wa.me/919952626660"
+    href="https://wa.me/919789459354"
     target="_blank"
     rel="noopener noreferrer"
     whileHover={{ scale: 1.1, y: -5 }}
